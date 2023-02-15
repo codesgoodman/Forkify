@@ -1,4 +1,6 @@
 import icons from 'url:../img/icons.svg'; // parcel v2 needs url: at the front for non-programming files
+import 'core-js/stable'; // polyfilling in general
+import 'regenerator-runtime/runtime'; //polyfilling async await
 
 const recipeContainer = document.querySelector('.recipe');
 
