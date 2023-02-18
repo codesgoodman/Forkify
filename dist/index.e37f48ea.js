@@ -560,6 +560,7 @@ function hmrAccept(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _esRegexpFlagsJs = require("core-js/modules/es.regexp.flags.js");
 var _webImmediateJs = require("core-js/modules/web.immediate.js");
+var _modelJs = require("./model.js");
 var _iconsSvg = require("url:../img/icons.svg"); // parcel v2 needs url: at the front for non-programming files
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 var _runtime = require("regenerator-runtime/runtime"); //polyfilling async await
@@ -583,27 +584,13 @@ const renderSpinner = function(parentEl) {
 };
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
-// 1. Loading recipe
 const showRecipe = async function() {
     try {
         const id = window.location.hash.slice(1);
         if (!id) return;
         renderSpinner(recipeContainer);
-        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
-        const data = await res.json();
-        if (!res.ok) throw new Error(`${data.message} ${res.status}`);
-        let { recipe  } = data.data;
-        recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients
-        };
-        console.log(recipe);
+        await _modelJs.loadRecipe(id);
+        const { recipe  } = _modelJs.state;
         // 2. Rendering recipe
         const markup = ` <figure class="recipe__fig">
     <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
@@ -704,74 +691,7 @@ showRecipe();
     "load"
 ].forEach((ev)=>window.addEventListener(ev, showRecipe));
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../img/icons.svg":"loVOp","core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"loVOp":[function(require,module,exports) {
-module.exports = require("ea39f07a3c3e5c8c").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
-
-},{"ea39f07a3c3e5c8c":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"gSXXb":[function(require,module,exports) {
+},{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","url:../img/icons.svg":"loVOp","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gSXXb":[function(require,module,exports) {
 var global = require("f804fc183b7269df");
 var DESCRIPTORS = require("5c5234b2dabb89d6");
 var defineBuiltInAccessor = require("f8c181ef68ed859e");
@@ -2160,7 +2080,38 @@ module.exports = function(scheduler, hasTimeArg) {
 },{"9c8dca1100483de5":"i8HOC","d0aa0b6ff0650f68":"148ka","120a5f7f3df6101e":"l3Kyn","ab6ec27ee038a70a":"2BA6V","fd439768b26da20b":"73xBt","729197473ce5fd1b":"RsFXo","a645e79b63e69833":"b9O3D"}],"2BA6V":[function(require,module,exports) {
 /* global Bun -- Deno case */ module.exports = typeof Bun == "function" && Bun && typeof Bun.version == "string";
 
-},{}],"dXNgZ":[function(require,module,exports) {
+},{}],"Y4A21":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "state", ()=>state);
+parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+var _regeneratorRuntime = require("regenerator-runtime");
+const state = {
+    recipe: {}
+};
+const loadRecipe = async function(id) {
+    try {
+        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+        const { recipe  } = data.data;
+        state.recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients
+        };
+        console.log(state.recipe);
+    } catch (err) {
+        alert(err);
+    }
+};
+
+},{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -2746,6 +2697,73 @@ try {
     if (typeof globalThis === "object") globalThis.regeneratorRuntime = runtime;
     else Function("r", "regeneratorRuntime = r")(runtime);
 }
+
+},{}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"loVOp":[function(require,module,exports) {
+module.exports = require("ea39f07a3c3e5c8c").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
+
+},{"ea39f07a3c3e5c8c":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
 
 },{}]},["d8XZh","aenu9"], "aenu9", "parcelRequire3a11")
 
