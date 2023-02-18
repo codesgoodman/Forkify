@@ -1,5 +1,6 @@
 //import icons
 import icons from 'url:../../img/icons.svg'; // parcel v2 needs url: at the front for non-programming files
+import { Fraction } from 'fractional';
 class RecipeView {
   #parentEl = document.querySelector('.recipe');
   #data;
@@ -87,7 +88,9 @@ class RecipeView {
       <svg class="recipe__icon">
         <use href="${icons}#icon-check"></use>
       </svg>
-      <div class="recipe__quantity">${ing.quantity}</div>
+      <div class="recipe__quantity">${new Fraction(
+        ing.quantity
+      ).toString()}</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
         ${ing.description}
