@@ -29,7 +29,7 @@ class RecipeView {
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
-  renderError = function (message = this.#errorMessage) {
+  renderError(message = this.#errorMessage) {
     const markup = `<div class="error">
         <div>
           <svg>
@@ -40,8 +40,8 @@ class RecipeView {
       </div>`;
     this.#clear();
     this.#parentEl.insertAdjacentHTML('afterbegin', markup);
-  };
-  renderMessage = function (message = this.#message) {
+  }
+  renderMessage(message = this.#message) {
     const markup = `<div class="message">
         <div>
           <svg>
@@ -52,7 +52,7 @@ class RecipeView {
       </div>`;
     this.#clear();
     this.#parentEl.insertAdjacentHTML('afterbegin', markup);
-  };
+  }
   #generateMarkup() {
     return `<figure class="recipe__fig">
     <img src="${this.#data.image}" alt="${
