@@ -4,6 +4,7 @@ import { Fraction } from 'fractional';
 class RecipeView {
   #parentEl = document.querySelector('.recipe');
   #data;
+  #errorMessage = 'We could not find the recipe. Please try again!';
 
   render(data) {
     this.#data = data;
@@ -27,7 +28,7 @@ class RecipeView {
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
-  renderError = function (message) {
+  renderError = function (message = this.#errorMessage) {
     const markup = `<div class="error">
         <div>
           <svg>
