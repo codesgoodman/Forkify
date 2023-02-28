@@ -3,8 +3,11 @@ import recipeView from './views/recipeView.js';
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
 // import { search } from 'core-js/fn/symbol';
+<<<<<<< HEAD
 
 const recipeContainer = document.querySelector('.recipe');
+=======
+>>>>>>> bd208c3e17bfdaad8db54992382bb9dd01ae3efa
 
 // https://forkify-api.herokuapp.com/v2
 
