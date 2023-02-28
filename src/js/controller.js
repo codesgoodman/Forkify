@@ -1,9 +1,8 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
-
-const recipeContainer = document.querySelector('.recipe');
 
 // https://forkify-api.herokuapp.com/v2
 
@@ -25,6 +24,7 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+    const query = searchView.getQuery();
     await model.loadSearchResults('pizza');
     console.log(model.state.search.results);
   } catch (err) {
