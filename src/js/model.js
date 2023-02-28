@@ -27,3 +27,14 @@ export const loadRecipe = async function (id) {
     throw err;
   }
 };
+
+export const loadSearchResults = async function (query) {
+  try {
+    const data = await getJson(
+      `https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza`
+    );
+  } catch (err) {
+    console.error(`${err}💥💥💥💥`);
+    throw err;
+  }
+};
