@@ -566,6 +566,7 @@ var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
 var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _runtime = require("regenerator-runtime/runtime"); //polyfilling async await
+// import { search } from 'core-js/fn/symbol';
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 const controlRecipes = async function() {
@@ -584,10 +585,11 @@ const controlRecipes = async function() {
 const controlSearchResults = async function() {
     try {
         const query = (0, _searchViewJsDefault.default).getQuery();
-        await _modelJs.loadSearchResults("pizza");
+        if (!query) return;
+        await _modelJs.loadSearchResults(query);
         console.log(_modelJs.state.search.results);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 };
 controlSearchResults();
@@ -595,6 +597,7 @@ controlSearchResults();
 // window.addEventListener('load', controlRecipes);
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
 };
 init();
 
@@ -2017,7 +2020,6 @@ const loadRecipe = async function(id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        console.log(state.recipe);
     } catch (err) {
         console.error(`${err}💥💥💥💥`);
         throw err;
@@ -3141,7 +3143,13 @@ parcelHelpers.defineInteropFlag(exports);
 class SearchView {
     #parentEl = document.querySelector(".search");
     getQuery() {
-        return this.#parentEl.querySelector(".search_field").value();
+        return this.#parentEl.querySelector(".search__field").value;
+    }
+    addHandlerSearch(handler) {
+        this.#parentEl.addEventListener("submit", function(e) {
+            e.preventDefault();
+            handler();
+        });
     }
 }
 exports.default = new SearchView();
