@@ -1,8 +1,10 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
-import searchView from './views/searchView.js';
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
+// import { search } from 'core-js/fn/symbol';
+
+const recipeContainer = document.querySelector('.recipe');
 
 // https://forkify-api.herokuapp.com/v2
 
@@ -24,11 +26,16 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+<<<<<<< HEAD
     const query = searchView.getQuery();
+    if (!query) return;
+    await model.loadSearchResults(query);
+=======
     await model.loadSearchResults('pizza');
+>>>>>>> parent of 9570e4a (add getQuery method and import into controller.js)
     console.log(model.state.search.results);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 controlSearchResults();
@@ -36,5 +43,6 @@ controlSearchResults();
 // window.addEventListener('load', controlRecipes);
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 init();
