@@ -23,8 +23,15 @@ const controlRecipes = async function () {
   }
 };
 
-controlRecipes();
-
+const controlSearchResults = async function () {
+  try {
+    await model.loadSearchResults('pizza');
+    console.log(model.state.search.results);
+  } catch (err) {
+    console.log(err);
+  }
+};
+controlSearchResults();
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
 const init = function () {
