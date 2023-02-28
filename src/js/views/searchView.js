@@ -1,6 +1,5 @@
 class SearchView {
   #parentEl = document.querySelector('.search');
-<<<<<<< HEAD
   getQuery() {
     return this.#parentEl.querySelector('.search__field').value;
   }
@@ -13,8 +12,6 @@ class SearchView {
       handler();
     });
   }
-=======
->>>>>>> parent of 9570e4a (add getQuery method and import into controller.js)
 }
 
 export default new SearchView();

@@ -26,14 +26,9 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-<<<<<<< HEAD
     const query = searchView.getQuery();
     if (!query) return;
     await model.loadSearchResults(query);
-=======
-    await model.loadSearchResults('pizza');
->>>>>>> parent of 9570e4a (add getQuery method and import into controller.js)
-    console.log(model.state.search.results);
   } catch (err) {
     console.error(err);
   }
