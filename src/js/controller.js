@@ -26,6 +26,7 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+    resultsView.renderSpinner();
     // 1) get search query
     const query = searchView.getQuery();
     if (!query) return;
