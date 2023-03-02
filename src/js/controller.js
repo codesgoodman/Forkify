@@ -1,6 +1,7 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
+import resultsView from './views/resultsView.js';
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
 // import { search } from 'core-js/fn/symbol';
