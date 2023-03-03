@@ -41,7 +41,7 @@ const controlSearchResults = async function () {
     console.error(err);
   }
 };
-controlSearchResults();
+
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
 const init = function () {
