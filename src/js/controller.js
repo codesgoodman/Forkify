@@ -4,6 +4,9 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
+if (module.hot) {
+  module.hot.accept();
+}
 // import { search } from 'core-js/fn/symbol';
 
 // https://forkify-api.herokuapp.com/v2

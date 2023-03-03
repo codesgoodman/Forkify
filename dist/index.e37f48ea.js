@@ -568,6 +568,7 @@ var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
 var _runtime = require("regenerator-runtime/runtime"); //polyfilling async await
+if (module.hot) module.hot.accept();
 // import { search } from 'core-js/fn/symbol';
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
