@@ -2010,7 +2010,8 @@ const state = {
     recipe: {},
     search: {
         query: "",
-        results: []
+        results: [],
+        resultsPerPage: 10
     }
 };
 const loadRecipe = async function(id) {
@@ -2051,8 +2052,8 @@ const loadSearchResults = async function(query) {
     }
 };
 const getSearchResultsPage = function(page) {
-    const start = (page - 1) * 10;
-    const end = page * 10;
+    const start = (page - 1) * state.search.resultsPerPage;
+    const end = page * state.search.resultsPerPage;
     return state.search.results.slice(start, end);
 };
 
