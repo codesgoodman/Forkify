@@ -2056,7 +2056,6 @@ const loadSearchResults = async function(query) {
     }
 };
 const getSearchResultsPage = function(page) {
-    console.log((0, _configJs.RES_PER_PAGE));
     const start = (page - 1) * state.search.resultsPerPage;
     const end = page * state.search.resultsPerPage;
     return state.search.results.slice(start, end);
@@ -3230,6 +3229,8 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".pagination");
     _generateMarkup() {
+        const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
+        console.log(numPages);
     // page 1 and there are more pages
     // page 1 and it is the only page
     // last page
