@@ -9,3 +9,5 @@ class PaginationView extends View {
     // other pages
   }
 }
+
+export default new PaginationView();
