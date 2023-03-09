@@ -596,7 +596,7 @@ const controlSearchResults = async function() {
         // 2) Load search result
         await _modelJs.loadSearchResults(query);
         // 3) render results
-        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(1));
+        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(6));
         // 4) render initial pagination
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
@@ -3239,9 +3239,9 @@ class PaginationView extends (0, _viewJsDefault.default) {
         // last page
         if (curPage === numPages && numPages > 1) return `<button class="btn--inline pagination__btn--prev">
       <svg class="search__icon">
-        <use href="src/img/icons.svg#icon-arrow-left"></use>
+        <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
       </svg>
-      <span>Page 1</span>
+      <span>Page ${curPage - 1}</span>
     </button>`;
         // other pages
         if (curPage < numPages) return `other pages`;
