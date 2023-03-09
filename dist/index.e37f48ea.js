@@ -2057,6 +2057,7 @@ const loadSearchResults = async function(query) {
     }
 };
 const getSearchResultsPage = function(page) {
+    state.search.page = page;
     const start = (page - 1) * state.search.resultsPerPage;
     const end = page * state.search.resultsPerPage;
     return state.search.results.slice(start, end);
@@ -3231,8 +3232,6 @@ class PaginationView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".pagination");
     _generateMarkup() {
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
-        console.log(numPages);
-        console.log(this._data);
         console.log(this._data.page);
         // page 1 and there are more pages
         if (this._data.page === 1 && numPages > 1) return `page1 and others`;
