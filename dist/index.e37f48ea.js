@@ -3249,9 +3249,20 @@ class PaginationView extends (0, _viewJsDefault.default) {
       <span>Page ${curPage - 1}</span>
     </button>`;
         // other pages
-        if (curPage < numPages) return `other pages`;
-    // page 1 and it's the only page
-    // return `only 1 page`;
+        if (curPage < numPages) return `<button class="btn--inline pagination__btn--prev">
+      <svg class="search__icon">
+        <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
+      </svg>
+      <span>Page ${curPage - 1}</span>
+    </button>
+    <button class="btn--inline pagination__btn--next">
+      <span>Page ${curPage + 1}</span>
+      <svg class="search__icon">
+        <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+      </svg>
+    </button>`;
+        // page 1 and it's the only page
+        return "";
     }
 }
 exports.default = new PaginationView();
