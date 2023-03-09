@@ -3234,7 +3234,12 @@ class PaginationView extends (0, _viewJsDefault.default) {
         const curPage = this._data.page;
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
         // page 1 and there are more pages
-        if (curPage === 1 && numPages > 1) return `page1 and others`;
+        if (curPage === 1 && numPages > 1) return `<button class="btn--inline pagination__btn--next">
+      <span>Page ${curPage + 1}</span>
+      <svg class="search__icon">
+        <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+      </svg>
+    </button>`;
         // page 1 and it is the only page
         // last page
         if (curPage === numPages && numPages > 1) return `<button class="btn--inline pagination__btn--prev">
