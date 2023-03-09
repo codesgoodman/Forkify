@@ -3,22 +3,28 @@ import icons from 'url:../../img/icons.svg';
 class PaginationView extends View {
   _parentEl = document.querySelector('.pagination');
   _generateMarkup() {
+    const curPage = this._data.page;
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
-    console.log(this._data.page);
+
     // page 1 and there are more pages
-    if (this._data.page === 1 && numPages > 1) {
+    if (curPage === 1 && numPages > 1) {
       return `page1 and others`;
     }
     // page 1 and it is the only page
 
     // last page
-    if (this._data.page === numPages && numPages > 1) {
-      return `last page`;
+    if (curPage === numPages && numPages > 1) {
+      return `<button class="btn--inline pagination__btn--prev">
+      <svg class="search__icon">
+        <use href="src/img/icons.svg#icon-arrow-left"></use>
+      </svg>
+      <span>Page 1</span>
+    </button>`;
     }
     // other pages
-    if (this._data.page < numPages) {
+    if (curPage < numPages) {
       return `other pages`;
     }
     // page 1 and it's the only page

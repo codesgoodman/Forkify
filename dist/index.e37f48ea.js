@@ -596,7 +596,7 @@ const controlSearchResults = async function() {
         // 2) Load search result
         await _modelJs.loadSearchResults(query);
         // 3) render results
-        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(2));
+        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(1));
         // 4) render initial pagination
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
@@ -3231,15 +3231,20 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".pagination");
     _generateMarkup() {
+        const curPage = this._data.page;
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
-        console.log(this._data.page);
         // page 1 and there are more pages
-        if (this._data.page === 1 && numPages > 1) return `page1 and others`;
+        if (curPage === 1 && numPages > 1) return `page1 and others`;
         // page 1 and it is the only page
         // last page
-        if (this._data.page === numPages && numPages > 1) return `last page`;
+        if (curPage === numPages && numPages > 1) return `<button class="btn--inline pagination__btn--prev">
+      <svg class="search__icon">
+        <use href="src/img/icons.svg#icon-arrow-left"></use>
+      </svg>
+      <span>Page 1</span>
+    </button>`;
         // other pages
-        if (this._data.page < numPages) return `other pages`;
+        if (curPage < numPages) return `other pages`;
     // page 1 and it's the only page
     // return `only 1 page`;
     }
