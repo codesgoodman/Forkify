@@ -14,13 +14,15 @@ class PaginationView extends View {
     // page 1 and it is the only page
 
     // last page
-    if (this._data.page === numPages) {
+    if (this._data.page === numPages && numPages > 1) {
       return `last page`;
     }
     // other pages
     if (this._data.page < numPages) {
       return `other pages`;
     }
+    // page 1 and it's the only page
+    return `only 1 page`;
   }
 }
 
