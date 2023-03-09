@@ -7,6 +7,8 @@ class PaginationView extends View {
       this._data.results.length / this._data.resultsPerPage
     );
     console.log(numPages);
+    console.log(this._data);
+    console.log(this._data.page);
     // page 1 and there are more pages
     if (this._data.page === 1 && numPages > 1) {
       return `page1 and others`;
@@ -22,7 +24,7 @@ class PaginationView extends View {
       return `other pages`;
     }
     // page 1 and it's the only page
-    return `only 1 page`;
+    // return `only 1 page`;
   }
 }
 

@@ -2015,6 +2015,7 @@ const state = {
     search: {
         query: "",
         results: [],
+        page: 1,
         resultsPerPage: (0, _configJs.RES_PER_PAGE)
     }
 };
@@ -3231,6 +3232,8 @@ class PaginationView extends (0, _viewJsDefault.default) {
     _generateMarkup() {
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
         console.log(numPages);
+        console.log(this._data);
+        console.log(this._data.page);
         // page 1 and there are more pages
         if (this._data.page === 1 && numPages > 1) return `page1 and others`;
         // page 1 and it is the only page
@@ -3238,8 +3241,8 @@ class PaginationView extends (0, _viewJsDefault.default) {
         if (this._data.page === numPages && numPages > 1) return `last page`;
         // other pages
         if (this._data.page < numPages) return `other pages`;
-        // page 1 and it's the only page
-        return `only 1 page`;
+    // page 1 and it's the only page
+    // return `only 1 page`;
     }
 }
 exports.default = new PaginationView();
