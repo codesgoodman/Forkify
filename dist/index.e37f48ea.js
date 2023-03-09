@@ -3233,8 +3233,9 @@ class PaginationView extends (0, _viewJsDefault.default) {
         console.log(numPages);
         // page 1 and there are more pages
         if (this._data.page === 1 && numPages > 1) return `page1 and others`;
-    // page 1 and it is the only page
-    // last page
+        // page 1 and it is the only page
+        // last page
+        if (this._data.page === numPages) return `last page`;
     // other pages
     }
 }
