@@ -8,7 +8,11 @@ class PaginationView extends View {
     );
     console.log(numPages);
     // page 1 and there are more pages
+    if (this._data.page === 1 && numPages > 1) {
+      return `page1 and others`;
+    }
     // page 1 and it is the only page
+
     // last page
     // other pages
   }

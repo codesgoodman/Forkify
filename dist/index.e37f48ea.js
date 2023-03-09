@@ -3231,7 +3231,8 @@ class PaginationView extends (0, _viewJsDefault.default) {
     _generateMarkup() {
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
         console.log(numPages);
-    // page 1 and there are more pages
+        // page 1 and there are more pages
+        if (this._data.page === 1 && numPages > 1) return `page1 and others`;
     // page 1 and it is the only page
     // last page
     // other pages
