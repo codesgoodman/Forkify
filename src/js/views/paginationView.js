@@ -2,7 +2,7 @@ import View from './view.js';
 import icons from 'url:../../img/icons.svg';
 class PaginationView extends View {
   _parentEl = document.querySelector('.pagination');
-  addHandler(handler) {
+  addHandlerClick(handler) {
     _this._parentEl.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--inline');
       console.log(btn);

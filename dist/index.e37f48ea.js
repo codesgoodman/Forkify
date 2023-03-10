@@ -3230,7 +3230,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".pagination");
-    addHandler(handler) {
+    addHandlerClick(handler) {
         _this._parentEl.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--inline");
             console.log(btn);
