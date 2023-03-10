@@ -603,11 +603,15 @@ const controlSearchResults = async function() {
         console.error(err);
     }
 };
+const controlPagination = function() {
+    console.log("page controller");
+};
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
+    (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
 };
 init();
 
@@ -3231,9 +3235,10 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".pagination");
     addHandlerClick(handler) {
-        _this._parentEl.addEventListener("click", function(e) {
+        this._parentEl.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--inline");
             console.log(btn);
+            handler();
         });
     }
     _generateMarkup() {

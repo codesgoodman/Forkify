@@ -44,10 +44,15 @@ const controlSearchResults = async function () {
     console.error(err);
   }
 };
+
+const controlPagination = function () {
+  console.log('page controller');
+};
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 init();

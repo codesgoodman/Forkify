@@ -3,9 +3,10 @@ import icons from 'url:../../img/icons.svg';
 class PaginationView extends View {
   _parentEl = document.querySelector('.pagination');
   addHandlerClick(handler) {
-    _this._parentEl.addEventListener('click', function (e) {
+    this._parentEl.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--inline');
       console.log(btn);
+      handler();
     });
   }
   _generateMarkup() {
