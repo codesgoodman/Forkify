@@ -3239,9 +3239,7 @@ class PaginationView extends (0, _viewJsDefault.default) {
             const btn = e.target.closest(".btn--inline");
             if (!btn) return;
             const goToPage = btn.dataset.goto;
-            console.log(goToPage);
-            console.log(btn);
-            handler();
+            handler(goToPage);
         });
     }
     _generateMarkup() {
