@@ -604,9 +604,9 @@ const controlSearchResults = async function() {
     }
 };
 const controlPagination = function(goToPage) {
-    // 3) render results
+    // 1) render new results
     (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(goToPage));
-    // 4) render initial pagination
+    // 2) render new pagination buttons
     (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
 };
 // window.addEventListener('hashchange', controlRecipes);
@@ -3241,7 +3241,7 @@ class PaginationView extends (0, _viewJsDefault.default) {
         this._parentEl.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--inline");
             if (!btn) return;
-            const goToPage = btn.dataset.goto;
+            const goToPage = +btn.dataset.goto;
             handler(goToPage);
         });
     }

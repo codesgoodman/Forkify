@@ -46,9 +46,9 @@ const controlSearchResults = async function () {
 };
 
 const controlPagination = function (goToPage) {
-  // 3) render results
+  // 1) render new results
   resultsView.render(model.getSearchResultsPage(goToPage));
-  // 4) render initial pagination
+  // 2) render new pagination buttons
   paginationView.render(model.state.search);
 };
 // window.addEventListener('hashchange', controlRecipes);
