@@ -603,8 +603,11 @@ const controlSearchResults = async function() {
         console.error(err);
     }
 };
-const controlPagination = function() {
-    console.log("page controller");
+const controlPagination = function(goToPage) {
+    // 3) render results
+    (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(goToPage));
+    // 4) render initial pagination
+    (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
 };
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
