@@ -610,7 +610,8 @@ const controlPagination = function(goToPage) {
     (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
 };
 const controlServings = function() {
-// update the recipe servings (in state)
+    // update the recipe servings (in state)
+    _modelJs.updateServings();
 // update recipe view
 };
 // window.addEventListener('hashchange', controlRecipes);

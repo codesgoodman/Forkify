@@ -54,6 +54,7 @@ const controlPagination = function (goToPage) {
 
 const controlServings = function () {
   // update the recipe servings (in state)
+  model.updateServings();
   // update recipe view
 };
 // window.addEventListener('hashchange', controlRecipes);
