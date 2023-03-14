@@ -51,6 +51,11 @@ const controlPagination = function (goToPage) {
   // 2) render new pagination buttons
   paginationView.render(model.state.search);
 };
+
+const controlServings = function () {
+  // update the recipe servings (in state)
+  // update recipe view
+};
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
 const init = function () {
