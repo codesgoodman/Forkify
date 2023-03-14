@@ -583,6 +583,8 @@ const controlRecipes = async function() {
         await _modelJs.loadRecipe(id);
         // 2. Rendering recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+        // Testing
+        controlServings();
     } catch (err) {
         (0, _recipeViewJsDefault.default).renderError();
     }
@@ -2076,7 +2078,7 @@ const getSearchResultsPage = function(page) {
     return state.search.results.slice(start, end);
 };
 const updateServings = function(newServings) {
-    state.recipe.ingredients.foreach((ing)=>{
+    state.recipe.ingredients.forEach((ing)=>{
         // newQt = oldQt * newServings / oldServings
         ing.quantity = ing.quantity * newServings / state.recipe.servings;
     });
