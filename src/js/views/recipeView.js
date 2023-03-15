@@ -15,6 +15,7 @@ class RecipeView extends View {
     this._parentEl.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--tiny');
       if (!btn) return;
+      handler();
     });
   }
   _generateMarkup() {

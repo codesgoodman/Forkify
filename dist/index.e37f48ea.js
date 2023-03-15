@@ -613,7 +613,7 @@ const controlPagination = function(goToPage) {
 };
 const controlServings = function() {
     // update the recipe servings (in state)
-    _modelJs.updateServings(6);
+    _modelJs.updateServings(8);
     // update recipe view
     (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
 };
@@ -2762,6 +2762,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         this._parentEl.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--tiny");
             if (!btn) return;
+            handler();
         });
     }
     _generateMarkup() {
