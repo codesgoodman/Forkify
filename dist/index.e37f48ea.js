@@ -611,9 +611,9 @@ const controlPagination = function(goToPage) {
     // 2) render new pagination buttons
     (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
 };
-const controlServings = function() {
+const controlServings = function(newServings) {
     // update the recipe servings (in state)
-    _modelJs.updateServings(8);
+    _modelJs.updateServings(newServings);
     // update recipe view
     (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
 };
@@ -2762,6 +2762,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         this._parentEl.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--tiny");
             if (!btn) return;
+            console.log(btn);
             handler();
         });
     }
