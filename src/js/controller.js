@@ -64,6 +64,7 @@ const controlServings = function () {
 // window.addEventListener('load', controlRecipes);
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  recipeView.addHandlerUpdateServings(controlServings);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };

@@ -621,6 +621,7 @@ const controlServings = function() {
 // window.addEventListener('load', controlRecipes);
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
+    (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
 };
