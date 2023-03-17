@@ -613,7 +613,7 @@ const controlPagination = function(goToPage) {
 };
 const controlServings = function(newServings) {
     // update the recipe servings (in state)
-    _modelJs.updateServings(newServings);
+    _modelJs.updateServings(9);
     // update recipe view
     (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
 };
