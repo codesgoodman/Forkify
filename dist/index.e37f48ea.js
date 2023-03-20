@@ -613,7 +613,8 @@ const controlServings = function(newServings) {
     // update the recipe servings (in state)
     _modelJs.updateServings(newServings);
     // update recipe view
-    (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+    // recipeView.render(model.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
 // window.addEventListener('hashchange', controlRecipes);
 // window.addEventListener('load', controlRecipes);
