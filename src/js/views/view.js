@@ -16,7 +16,7 @@ export default class View {
     const newMarkup = this._generateMarkup();
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElement = newDOM.querySelectorAll('*');
-    console.log(newMarkup);
+    console.log(newElement);
   }
   _clear() {
     this._parentEl.innerHTML = '';
