@@ -2873,9 +2873,12 @@ class View {
         this._data = data;
         const newMarkup = this._generateMarkup();
         const newDOM = document.createRange().createContextualFragment(newMarkup);
-        const newElement = Array.from(newDOM.querySelectorAll("*"));
-        const curElement = Array.from(this._parentEl.querySelectorAll("*"));
-        console.log(newElement);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const curElements = Array.from(this._parentEl.querySelectorAll("*"));
+        newElements.forEach((newEl, i)=>{
+            const curEl = curElements[i];
+            console.log(curEl, newEl.isEqualNode(curEl));
+        });
     }
     _clear() {
         this._parentEl.innerHTML = "";
