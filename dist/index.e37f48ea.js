@@ -2874,6 +2874,7 @@ class View {
         const newMarkup = this._generateMarkup();
         const newDOM = document.createRange().createContextualFragment(newMarkup);
         const newElement = newDOM.querySelectorAll("*");
+        const curElement = this._parentEl.querySelectorAll("*");
         console.log(newElement);
     }
     _clear() {
