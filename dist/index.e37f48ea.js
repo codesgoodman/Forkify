@@ -2873,8 +2873,8 @@ class View {
         this._data = data;
         const newMarkup = this._generateMarkup();
         const newDOM = document.createRange().createContextualFragment(newMarkup);
-        const newElement = newDOM.querySelectorAll("*");
-        const curElement = this._parentEl.querySelectorAll("*");
+        const newElement = Array.from(newDOM.querySelectorAll("*"));
+        const curElement = Array.from(this._parentEl.querySelectorAll("*"));
         console.log(newElement);
     }
     _clear() {
