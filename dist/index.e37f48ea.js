@@ -2880,7 +2880,7 @@ class View {
             // updates modified text
             if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") curEl.textContent = newEl.textContent;
             // updates modified attributes
-            if (!newEl.isEqualNode(curEl)) console.log(newEl.attributes);
+            if (!newEl.isEqualNode(curEl)) Array.from(newEl.attributes).forEach((attr)=>curEl.setAttribute(attr.name, attr.value));
         });
     }
     _clear() {

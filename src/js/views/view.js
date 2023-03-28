@@ -28,7 +28,9 @@ export default class View {
       }
       // updates modified attributes
       if (!newEl.isEqualNode(curEl)) {
-        console.log(newEl.attributes);
+        Array.from(newEl.attributes).forEach(attr =>
+          curEl.setAttribute(attr.name, attr.value)
+        );
       }
     });
   }
