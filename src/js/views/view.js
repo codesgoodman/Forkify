@@ -19,12 +19,16 @@ export default class View {
     const curElements = Array.from(this._parentEl.querySelectorAll('*'));
     newElements.forEach((newEl, i) => {
       const curEl = curElements[i];
-      console.log(curEl, newEl.isEqualNode(curEl));
+      // updates modified text
       if (
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ''
       ) {
         curEl.textContent = newEl.textContent;
+      }
+      // updates modified attributes
+      if (!newEl.isEqualNode(curEl)) {
+        console.log(newEl.attributes);
       }
     });
   }
