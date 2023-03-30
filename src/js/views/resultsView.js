@@ -11,7 +11,7 @@ class ResultsView extends View {
     const id = window.location.hash.slice(1);
     return `<li class="preview">
       <a class="preview__link ${
-        result.id === id ? 'preview__link--active' : ''
+        result.id === id ? 'preview__link--active' : ' '
       }" href="#${result.id}">
         <figure class="preview__fig">
           <img src="${result.image}" alt="${result.title}" />
