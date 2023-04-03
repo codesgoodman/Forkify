@@ -3252,6 +3252,9 @@ class ResultsView extends (0, _viewJsDefault.default) {
     }
     _generateMarkupPreview(result) {
         const id = window.location.hash.slice(1);
+        console.log(id);
+        console.log(result);
+        console.log(result.id);
         return `<li class="preview">
       <a class="preview__link ${result.id === id ? "preview__link--active" : ""}" href="#${result.id}">
         <figure class="preview__fig">
