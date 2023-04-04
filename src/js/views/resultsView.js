@@ -11,7 +11,7 @@ class ResultsView extends View {
     const id = window.location.hash.slice(1);
     console.log(id);
     console.log(result);
-    console.log(result.id);
+
     return `<li class="preview">
       <a class="preview__link ${
         result.id === id ? 'preview__link--active' : ''
