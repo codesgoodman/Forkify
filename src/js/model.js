@@ -69,5 +69,8 @@ export const updateServings = function (newServings) {
 };
 
 export const addBookmark = function (recipe) {
+  // Add bookmark
   state.bookmarks.push(recipe);
+  // Mark current recipe as bookmark
+  if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };
