@@ -2819,7 +2819,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
     </div>
     <button class="btn--round">
       <svg class="">
-        <use href="${0, _iconsSvgDefault.default}#icon-bookmark-fill"></use>
+        <use href="${0, _iconsSvgDefault.default}#icon-bookmark"></use>
       </svg>
     </button>
   </div>
