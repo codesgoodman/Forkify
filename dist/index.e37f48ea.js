@@ -621,6 +621,7 @@ const controlServings = function(newServings) {
 const controlAddBookmark = function() {
     _modelJs.addBookmark(_modelJs.state.recipe);
     console.log(_modelJs.state.recipe);
+    (0, _recipeViewJsDefault.default).update();
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);

@@ -65,6 +65,7 @@ const controlServings = function (newServings) {
 const controlAddBookmark = function () {
   model.addBookmark(model.state.recipe);
   console.log(model.state.recipe);
+  recipeView.update();
 };
 
 const init = function () {
