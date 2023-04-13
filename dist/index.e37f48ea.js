@@ -2030,6 +2030,7 @@ parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
 parcelHelpers.export(exports, "getSearchResultsPage", ()=>getSearchResultsPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 parcelHelpers.export(exports, "addBookmark", ()=>addBookmark);
+parcelHelpers.export(exports, "deleteBookmark", ()=>deleteBookmark);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./config.js");
 var _helpersJs = require("./helpers.js");
@@ -2043,9 +2044,9 @@ const state = {
     },
     bookmarks: []
 };
-const loadRecipe = async function(id) {
+const loadRecipe = async function(id1) {
     try {
-        const data = await (0, _helpersJs.getJson)(`${(0, _configJs.API_URL)}/${id}`);
+        const data = await (0, _helpersJs.getJson)(`${(0, _configJs.API_URL)}/${id1}`);
         const { recipe  } = data.data;
         state.recipe = {
             id: recipe.id,
@@ -2057,7 +2058,7 @@ const loadRecipe = async function(id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        if (state.bookmarks.some((bookmark)=>bookmark.id == id)) state.recipe.bookmarked = true;
+        if (state.bookmarks.some((bookmark)=>bookmark.id == id1)) state.recipe.bookmarked = true;
         else state.recipe.bookmarked = false;
     } catch (err) {
         console.error(`${err}💥💥💥💥`);
@@ -2099,6 +2100,13 @@ const addBookmark = function(recipe) {
     state.bookmarks.push(recipe);
     // Mark current recipe as bookmark
     if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+};
+const deleteBookmark = function(recipe) {
+    const index = state.bookmarks.findIndex((el)=>el.id === id);
+    // Delete bookmark
+    state.bookmarks.splice(index, 1);
+    // Mark current recipe as not bookmarked
+    if (recipe.id === state.recipe.id) state.recipe.bookmarked = false;
 };
 
 },{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
