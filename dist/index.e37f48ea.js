@@ -620,7 +620,7 @@ const controlServings = function(newServings) {
 };
 const controlAddBookmark = function() {
     if (!_modelJs.state.recipe.bookmarked) _modelJs.addBookmark(_modelJs.state.recipe);
-    if (_modelJs.state.recipe.bookmarked) _modelJs.deleteBookmark(_modelJs.state.recipe.id);
+    else _modelJs.deleteBookmark(_modelJs.state.recipe.id);
     console.log(_modelJs.state.recipe);
     (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
@@ -2045,9 +2045,9 @@ const state = {
     },
     bookmarks: []
 };
-const loadRecipe = async function(id1) {
+const loadRecipe = async function(id) {
     try {
-        const data = await (0, _helpersJs.getJson)(`${(0, _configJs.API_URL)}/${id1}`);
+        const data = await (0, _helpersJs.getJson)(`${(0, _configJs.API_URL)}/${id}`);
         const { recipe  } = data.data;
         state.recipe = {
             id: recipe.id,
@@ -2059,7 +2059,7 @@ const loadRecipe = async function(id1) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        if (state.bookmarks.some((bookmark)=>bookmark.id == id1)) state.recipe.bookmarked = true;
+        if (state.bookmarks.some((bookmark)=>bookmark.id == id)) state.recipe.bookmarked = true;
         else state.recipe.bookmarked = false;
     } catch (err) {
         console.error(`${err}💥💥💥💥`);
@@ -2102,12 +2102,12 @@ const addBookmark = function(recipe) {
     // Mark current recipe as bookmark
     if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };
-const deleteBookmark = function(recipe) {
+const deleteBookmark = function(id) {
     const index = state.bookmarks.findIndex((el)=>el.id === id);
     // Delete bookmark
     state.bookmarks.splice(index, 1);
     // Mark current recipe as not bookmarked
-    if (recipe.id === state.recipe.id) state.recipe.bookmarked = false;
+    if (id === state.recipe.id) state.recipe.bookmarked = false;
 };
 
 },{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
