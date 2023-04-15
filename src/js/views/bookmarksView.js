@@ -1,6 +1,6 @@
 import View from './view.js';
 import icons from 'url:../../img/icons.svg';
-class ResultsView extends View {
+class BookmarksView extends View {
   _parentEl = document.querySelector('.results');
   _errorMessage = 'No recipes found for your specific query. Please Try again!';
   _message = '';
@@ -27,4 +27,4 @@ class ResultsView extends View {
   }
 }
 
-export default new ResultsView();
+export default new BookmarksView();
