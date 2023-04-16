@@ -1,8 +1,9 @@
 import View from './view.js';
 import icons from 'url:../../img/icons.svg';
 class BookmarksView extends View {
-  _parentEl = document.querySelector('.results');
-  _errorMessage = 'No recipes found for your specific query. Please Try again!';
+  _parentEl = document.querySelector('.bookmarks__list');
+  _errorMessage =
+    'No bookmarks yet. Find a recipe of your preference and bookmark it!';
   _message = '';
   _generateMarkup() {
     return this._data.map(this._generateMarkupPreview).join('');
