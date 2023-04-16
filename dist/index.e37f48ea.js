@@ -567,10 +567,10 @@ var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
-var _bookmarksViewJs = require("./views/bookmarksView.js");
-var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _paginationViewJs = require("./views/paginationView.js");
 var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
+var _bookmarksViewJs = require("./views/bookmarksView.js");
+var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _runtime = require("regenerator-runtime/runtime"); //polyfilling async await
 if (module.hot) module.hot.accept();
 // import { search } from 'core-js/fn/symbol';
@@ -621,10 +621,13 @@ const controlServings = function(newServings) {
     (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
 const controlAddBookmark = function() {
+    // 1) add or remove bookmarks
     if (!_modelJs.state.recipe.bookmarked) _modelJs.addBookmark(_modelJs.state.recipe);
     else _modelJs.deleteBookmark(_modelJs.state.recipe.id);
-    console.log(_modelJs.state.recipe);
+    // 2) update recipe view
     (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
+    // 3) render bookmark view
+    (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmarks);
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);

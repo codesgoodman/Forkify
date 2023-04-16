@@ -2,8 +2,9 @@ import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
-import bookmarksView from './views/bookmarksView.js';
 import paginationView from './views/paginationView.js';
+import bookmarksView from './views/bookmarksView.js';
+
 import 'core-js/stable'; // polyfilling in general
 import 'regenerator-runtime/runtime'; //polyfilling async await
 if (module.hot) {
@@ -64,11 +65,15 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
+  // 1) add or remove bookmarks
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
 
-  console.log(model.state.recipe);
+  // 2) update recipe view
   recipeView.update(model.state.recipe);
+
+  // 3) render bookmark view
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {
