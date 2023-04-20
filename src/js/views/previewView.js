@@ -1,7 +1,7 @@
 import View from './view.js';
 import icons from 'url:../../img/icons.svg';
 class PreviewView extends View {
-  _parentEl = document.querySelector('.results');
+  _parentEl = '';
 
   _generateMarkup() {
     return this._data.map(this._generateMarkupPreview).join('');
