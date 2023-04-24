@@ -3372,7 +3372,7 @@ class BookmarksView extends (0, _viewJsDefault.default) {
     _errorMessage = "No bookmarks yet! Find a recipe of your preference and bookmark it.";
     _message = "";
     _generateMarkup() {
-        return this._data.map(this._generateMarkupPreview).join("");
+        return this._data.map((result)=>(0, _previewViewJsDefault.default).render(result)).join("");
     }
 }
 exports.default = new BookmarksView();
