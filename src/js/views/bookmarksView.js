@@ -7,7 +7,7 @@ class BookmarksView extends View {
     'No bookmarks yet! Find a recipe of your preference and bookmark it.';
   _message = '';
   _generateMarkup() {
-    return this._data.map(result => previewView.render(result)).join('');
+    return this._data.map(bookmark => previewView.render(bookmark)).join('');
   }
 }
 
