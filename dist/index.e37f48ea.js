@@ -3369,7 +3369,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class BookmarksView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".bookmarks__list");
-    _errorMessage = "No bookmarks yet! Find a recipe of your preference and bookmark it.";
+    _errorMessage = "No bookmarks yet. Find a recipe of your preference and bookmark it.";
     _message = "";
     _generateMarkup() {
         return this._data.map((bookmark)=>(0, _previewViewJsDefault.default).render(bookmark)).join("");
