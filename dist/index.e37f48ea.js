@@ -3282,7 +3282,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class ResultsView extends (0, _viewJsDefault.default) {
     _parentEl = document.querySelector(".results");
-    _errorMessage = "No recipes found for your specific query. Please Try again!";
+    _errorMessage = "No recipes found for your specific query. Please Try again.";
     _message = "";
     _generateMarkup() {
         return this._data.map(this._generateMarkupPreview).join("");
