@@ -5,9 +5,7 @@ class ResultsView extends View {
   _errorMessage = 'No recipes found for your specific query. Please Try again.';
   _message = '';
   _generateMarkup() {
-    return this._data
-      .map(bookmark => previewView.render(bookmark, false))
-      .join('');
+    return this._data.map(result => previewView.render(result, false)).join('');
   }
 }
 
