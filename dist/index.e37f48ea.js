@@ -2133,8 +2133,7 @@ const init = function() {
 init();
 const clearBookmarks = function() {
     localStorage.clear("bookmarks");
-};
-clearBookmarks();
+}; // clearBookmarks();
 
 },{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
 /**
