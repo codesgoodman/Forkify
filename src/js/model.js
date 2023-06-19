@@ -80,6 +80,7 @@ export const addBookmark = function (recipe) {
   state.bookmarks.push(recipe);
   // Mark current recipe as bookmark
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+  persistBookmarks();
 };
 
 export const deleteBookmark = function (id) {
@@ -88,4 +89,5 @@ export const deleteBookmark = function (id) {
   state.bookmarks.splice(index, 1);
   // Mark current recipe as not bookmarked
   if (id === state.recipe.id) state.recipe.bookmarked = false;
+  persistBookmarks();
 };
