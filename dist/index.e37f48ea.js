@@ -3302,7 +3302,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PreviewView extends (0, _viewJsDefault.default) {
     _parentEl = "";
-    _generateMarkupPreview(result) {
+    _generateMarkup(result) {
         const id = window.location.hash.slice(1);
         return `<li class="preview">
       <a class="preview__link ${this._data.id === id ? "preview__link--active" : ""}" href="#${this._data.id}">
