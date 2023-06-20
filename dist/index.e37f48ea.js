@@ -2080,7 +2080,10 @@ const createRecipeObject = function(data) {
         image: recipe.image_url,
         servings: recipe.servings,
         cookingTime: recipe.cooking_time,
-        ingredients: recipe.ingredients
+        ingredients: recipe.ingredients,
+        ...recipe.key && {
+            key: recipe.key
+        }
     };
 };
 const loadRecipe = async function(id) {
