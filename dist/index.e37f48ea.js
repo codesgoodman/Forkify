@@ -646,7 +646,7 @@ const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerAddBookmark(controlAddBookmark);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
-    (0, _addRecipeViewJsDefault.default).addHandlerUpload(controlAddRecipe);
+    (0, _addRecipeViewJsDefault.default)._addHandlerUpload(controlAddRecipe);
 };
 init();
 
@@ -3449,13 +3449,14 @@ class AddRecipeView extends (0, _viewJsDefault.default) {
         this._btnClose.addEventListener("click", this.toggleWindow.bind(this));
         this._overlay.addEventListener("click", this.toggleWindow.bind(this));
     }
-    _addHandlerUpload() {
+    _addHandlerUpload(handler) {
         this._parentEl.addEventListener("submit", function(e) {
             e.preventDefault();
-            const data = [
+            const dataArr = [
                 ...new FormData(this)
             ];
-            console.log(data);
+            const data = Object.fromEntries(dataArr);
+            handler(data);
         });
     }
     _generateMarkup() {}
