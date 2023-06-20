@@ -106,13 +106,20 @@ const clearBookmarks = function () {
 // clearBookmarks();
 
 export const uploadRecipe = async function (newRecipe) {
-  const ingredients = Object.entries(newRecipe)
-    .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
-    .map(ing => {
-      const [quantity, unit, desctiption] = ing[1]
-        .replaceAll(' ', '')
-        .split(',');
-      return { quantity: quantity ? +quantity : null, unit, desctiption };
-    });
-  console.log(ingredients);
+  try {
+    const ingredients = Object.entries(newRecipe)
+      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .map(ing => {
+        const ingArr = ing[1].replaceAll(' ', '').split(',');
+        if (ingArr.length !== 3)
+          throw new Error(
+            'Wrong ingredient format. Please use the correct format.'
+          );
+        const [quantity, unit, desctiption] = ingArr;
+        return { quantity: quantity ? +quantity : null, unit, desctiption };
+      });
+    console.log(ingredients);
+  } catch (err) {
+    throw err;
+  }
 };
