@@ -20,8 +20,16 @@ class AddRecipeView extends View {
     this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
   }
   _addHandlerHideWindow() {
-    this._window.addEventListener('click', this.toggleWindow.bind(this));
+    this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
     this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+  }
+
+  _addHandlerUpload() {
+    this._parentEl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = [...new FormData(this)];
+      console.log(data);
+    });
   }
 
   _generateMarkup() {}
