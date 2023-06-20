@@ -13,21 +13,25 @@ export const state = {
   bookmarks: [],
 };
 
+const createRecipeObject = function (data) {
+  const { recipe } = data.data;
+  return {
+    id: recipe.id,
+    title: recipe.title,
+    publisher: recipe.publisher,
+    sourceUrl: recipe.source_url,
+    image: recipe.image_url,
+    servings: recipe.servings,
+    cookingTime: recipe.cooking_time,
+    ingredients: recipe.ingredients,
+  };
+};
+
 export const loadRecipe = async function (id) {
   try {
     const data = await getJson(`${API_URL}/${id}`);
+    state.recipe = createRecipeObject(data);
 
-    const { recipe } = data.data;
-    state.recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
@@ -115,8 +119,8 @@ export const uploadRecipe = async function (newRecipe) {
           throw new Error(
             'Wrong ingredient format. Please use the correct format.'
           );
-        const [quantity, unit, desctiption] = ingArr;
-        return { quantity: quantity ? +quantity : null, unit, desctiption };
+        const [quantity, unit, description] = ingArr;
+        return { quantity: quantity ? +quantity : null, unit, description };
       });
     const recipe = {
       title: newRecipe.title,
@@ -128,6 +132,7 @@ export const uploadRecipe = async function (newRecipe) {
       ingredients,
     };
     const data = await sendJson(`${API_URL}?key=${KEY}`, recipe);
+    state.recipe = createRecipeObject(data);
     console.log(data);
   } catch (err) {
     throw err;
