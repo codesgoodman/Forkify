@@ -86,6 +86,8 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
+    // show loading spinner
+    addRecipeView.renderSpinner();
     // upload the new recipe data
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
@@ -97,6 +99,8 @@ const controlAddRecipe = async function (newRecipe) {
     }, MODAL_CLOSE_SEC * 1000);
     // success message
     addRecipeView.renderMessage();
+    // render bookmarks
+    bookmarksView.render(model.state.bookmarks);
   } catch (err) {
     console.error('💥', err);
     addRecipeView.renderError(err.message);
