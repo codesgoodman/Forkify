@@ -654,6 +654,8 @@ const controlAddRecipe = async function(newRecipe) {
         (0, _addRecipeViewJsDefault.default).renderMessage();
         // render bookmarks
         (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmarks);
+        // change ID in URL
+        window.history.pushState(null, "", `#${_modelJs.state.recipe.id}`);
     } catch (err) {
         console.error("\uD83D\uDCA5", err);
         (0, _addRecipeViewJsDefault.default).renderError(err.message);
